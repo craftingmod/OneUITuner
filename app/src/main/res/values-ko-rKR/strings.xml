@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">OneUI Tuner</string>
+    <string name="clock">시계</string>
+    <string name="status_bar">상단바</string>
+    <string name="misc">기타</string>
+    <string name="qs">상단바 토글</string>
+    <string name="custom_clock">커스텀 상단바 시계</string>
+    <string name="custom_clock_desc">삼성의 상단바 시계를 직접 수정가능한 버전으로 바꿉니다.</string>
+    <string name="header_count_portrait">버튼 개수 (세로 화면)</string>
+    <string name="header_count_landscape">버튼 개수 (가로 화면)</string>
+    <string name="old_recents">예전 스타일의 최근 목록</string>
+    <string name="old_recents_desc">예전(세로로 정렬된 목록) 스타일의 최근 목록을 사용합니다. 재부팅이 필요합니다.</string>
+    <string name="nav_height">내비게이션 바 높이</string>
+    <string name="clock_format">상단바 시계 형식</string>
+    <string name="custom_clock_format_ref">시간/날짜 형식 도움말</string>
+    <string name="left_system_icons">상단바 아이콘 왼쪽 정렬</string>
+    <string name="hide_status_bar_carrier">통신사 마크 제거</string>
+    <string name="custom_qs_date_format">펼친 상단바의 시계를 커스텀</string>
+    <string name="qs_date_format">펼친 상단바의 날짜 형식 (재부팅이 필요합니다)</string>
+    <string name="left_system_icons_desc">시스템 아이콘(와이파이, 시그널 아이콘 등등)을 왼쪽으로 옮깁니다.</string>
+    <string name="hide_status_bar_carrier_desc">추악한 통신사의 추노마크를 잠금화면 및 상단바에서 숨깁니다. 재부팅이 필요합니다.</string>
+    <string name="qqs_hint">빠른 설정 목록(펼친 상단바의 토글 목록)이 너무 많으면 5x3의 표 형식으로 설정됩니다.</string>
+</resources>
