@@ -145,7 +145,7 @@ fun Context.install(which: String, listener: ((apk: File) -> Unit)?) {
                                     )
                                 )
                             }
-
+                        if (prefs.hideStatusBarCarrier) {
                             add(
                                 ResourceFileData(
                                     "bools.xml",
@@ -161,7 +161,6 @@ fun Context.install(which: String, listener: ((apk: File) -> Unit)?) {
                                     )
                                 )
                             )
-                        if (prefs.hideStatusBarCarrier) {
                             add(
                                 ResourceFileData(
                                     "dimens.xml",
@@ -204,8 +203,9 @@ fun Context.install(which: String, listener: ((apk: File) -> Unit)?) {
                                     "drawable",
                                     getResourceXmlFromAsset("statusbar/drawable", "stat_notify_operator_logo_org.xml")
                                 )
-                            }
+                            )
                         }
+                     }
                 )
             }
             else -> return@launch
