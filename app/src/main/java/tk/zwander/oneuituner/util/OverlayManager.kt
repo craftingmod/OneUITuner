@@ -162,9 +162,45 @@ fun Context.install(which: String, listener: ((apk: File) -> Unit)?) {
                         if (prefs.hideStatusBarCarrier) {
                             add(
                                 ResourceFileData(
-                                    "keyguard_status_bar.xml",
-                                    "layout",
-                                    getResourceXmlFromAsset("statusbar/layout", "keyguard_status_bar.xml")
+                                    "dimens.xml",
+                                    "values",
+                                    makeResourceXml(
+                                        arrayListOf(
+                                            ResourceData(
+                                                "dimen",
+                                                "status_bar_carrier_text_size",
+                                                "0.0dip"
+                                            )
+                                        )
+                                    )
+                                )
+                            )
+                            add(
+                                ResourceFileData(
+                                    "stat_notify_operator_logo_skt.xml",
+                                    "drawable",
+                                    getResourceXmlFromAsset("statusbar/drawable", "stat_notify_operator_logo_skt.xml")
+                                )
+                            )
+                            add(
+                                ResourceFileData(
+                                    "stat_notify_operator_logo_kt.xml",
+                                    "drawable",
+                                    getResourceXmlFromAsset("statusbar/drawable", "stat_notify_operator_logo_kt.xml")
+                                )
+                            )
+                            add(
+                                ResourceFileData(
+                                    "stat_notify_operator_logo_lgt.xml",
+                                    "drawable",
+                                    getResourceXmlFromAsset("statusbar/drawable", "stat_notify_operator_logo_lgt.xml")
+                                )
+                            )
+                            add(
+                                ResourceFileData(
+                                    "stat_notify_operator_logo_org.xml",
+                                    "drawable",
+                                    getResourceXmlFromAsset("statusbar/drawable", "stat_notify_operator_logo_org.xml")
                                 )
                             )
                         }
