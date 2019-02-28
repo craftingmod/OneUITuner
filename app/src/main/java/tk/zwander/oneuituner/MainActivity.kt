@@ -14,6 +14,7 @@ import android.view.View
 import android.view.animation.AnimationUtils
 import android.view.animation.AnticipateInterpolator
 import android.view.animation.OvershootInterpolator
+import android.widget.Button
 import android.widget.ImageButton
 import android.widget.RelativeLayout
 import androidx.appcompat.app.AppCompatActivity
@@ -21,6 +22,7 @@ import androidx.appcompat.widget.AppCompatTextView
 import androidx.core.content.FileProvider
 import androidx.navigation.NavController
 import androidx.navigation.NavDestination
+import info.build.DummyActivity
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import tk.zwander.oneuituner.util.*
@@ -71,6 +73,9 @@ class MainActivity : AppCompatActivity(), NavController.OnDestinationChangedList
                 setTextAppearance(android.R.style.TextAppearance_Material_Widget_ActionBar_Title)
                 setTextColor(Color.WHITE)
             }
+        }
+        this.findViewById<Button>(R.id.build_info_btn).setOnClickListener {
+            startActivity(Intent(this, DummyActivity::class.java))
         }
 
 //        val ldClass = Class.forName("libcore.icu.LocaleData")

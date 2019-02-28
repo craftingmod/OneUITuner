@@ -21,4 +21,6 @@
     <string name="left_system_icons_desc">시스템 아이콘(와이파이, 시그널 아이콘 등등)을 왼쪽으로 옮깁니다.</string>
     <string name="hide_status_bar_carrier_desc">추악한 통신사의 추노마크를 잠금화면 및 상단바에서 숨깁니다. 재부팅이 필요합니다.</string>
     <string name="qqs_hint">빠른 설정 목록(펼친 상단바의 토글 목록)이 너무 많으면 5x3의 표 형식으로 설정됩니다.</string>
+    <string name="builded_custom">RIP ChocoRoyce\n비공식 빌드\n프래그먼트 너무 어려워요</string>
+    <string name="builded_button">정보</string>
 </resources>
