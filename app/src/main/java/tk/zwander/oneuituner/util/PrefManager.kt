@@ -23,12 +23,16 @@ class PrefManager private constructor(private val context: Context) {
 
         const val HEADER_COUNT_PORTRAIT = "header_count_portrait"
         const val HEADER_COUNT_LANDSCAPE = "header_count_landscape"
+        const val HIDE_QS_TILE_BACKGROUND = "hide_qs_tile_background"
 
         const val OLD_RECENTS = "old_recents"
         const val NAV_HEIGHT = "nav_height"
+        const val STATUS_BAR_HEIGHT = "status_bar_height"
 
         const val LEFT_SYSTEM_ICONS = "left_system_icons"
         const val HIDE_STATUS_BAR_CARRIER = "hide_status_bar_carrier"
+
+        const val LOCK_SCREEN_ROTATION = "lock_screen_rotation"
     }
 
     private val prefs = PreferenceManager.getDefaultSharedPreferences(context)
@@ -51,17 +55,26 @@ class PrefManager private constructor(private val context: Context) {
     val headerCountLandscape: Int
         get() = getInt(HEADER_COUNT_LANDSCAPE, 10)
 
+    val hideQsTileBackground: Boolean
+        get() = getBoolean(HIDE_QS_TILE_BACKGROUND, false)
+
     val oldRecents: Boolean
         get() = getBoolean(OLD_RECENTS, false)
 
     val navHeight: Float
         get() = getInt(NAV_HEIGHT, 480) / 10f
 
+    val statusBarHeight: Float
+        get() = getInt(STATUS_BAR_HEIGHT, 240) / 10f
+
     val leftSystemIcons: Boolean
         get() = getBoolean(LEFT_SYSTEM_ICONS, false)
 
     val hideStatusBarCarrier: Boolean
         get() = getBoolean(HIDE_STATUS_BAR_CARRIER, false)
+
+    val lockScreenRotation: Boolean
+        get() = getBoolean(LOCK_SCREEN_ROTATION, false)
 
     fun getInt(key: String, def: Int = 0) = prefs.getInt(key, def)
     fun getString(key: String, def: String): String = prefs.getString(key, def) ?: def

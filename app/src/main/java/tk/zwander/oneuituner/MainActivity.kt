@@ -19,12 +19,14 @@ import android.widget.Button
 import android.widget.ImageButton
 import android.widget.RelativeLayout
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.core.content.FileProvider
 import androidx.navigation.NavController
 import androidx.navigation.NavDestination
 import info.build.DummyActivity
+import eu.chainfire.libsuperuser.Shell
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import tk.zwander.oneuituner.util.*
@@ -37,7 +39,6 @@ class MainActivity : AppCompatActivity(), NavController.OnDestinationChangedList
     private val overlayReceiver = OverlayReceiver()
 
     private val backButton by lazy { createBackButton() }
-    private val workaround by lazy { WorkaroundInstaller(this) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -65,6 +66,7 @@ class MainActivity : AppCompatActivity(), NavController.OnDestinationChangedList
         }
 
         remove.setOnClickListener {
+            progress_remove.visibility = View.VISIBLE
             uninstall(currentFrag?.label.toString())
         }
 
@@ -91,6 +93,17 @@ class MainActivity : AppCompatActivity(), NavController.OnDestinationChangedList
 //            .get(d)
 //
 //        Log.e("OneUITuner", hms.toString())
+
+        if (needsRoot && !Shell.SU.available()) {
+            AlertDialog.Builder(this)
+                .setTitle(R.string.root_required)
+                .setMessage(R.string.root_required_desc)
+                .setCancelable(false)
+                .setPositiveButton(android.R.string.ok) { _, _ ->
+                    finish()
+                }
+                .show()
+        }
     }
 
     override fun onNewIntent(intent: Intent?) {
@@ -99,16 +112,25 @@ class MainActivity : AppCompatActivity(), NavController.OnDestinationChangedList
         when (intent?.action) {
             WorkaroundInstaller.ACTION_FINISHED -> {
                 val status = intent.getIntExtra(PackageInstaller.EXTRA_STATUS, -100)
-                val message: String? = intent.getStringExtra(PackageInstaller.EXTRA_STATUS_MESSAGE)
+//                val message: String? = intent.getStringExtra(PackageInstaller.EXTRA_STATUS_MESSAGE)
 
                 progress_apply.visibility = View.GONE
-
-                Toast.makeText(this, message.toString(), Toast.LENGTH_SHORT).show()
+                progress_remove.visibility = View.GONE
 
                 when (status) {
                     PackageInstaller.STATUS_PENDING_USER_ACTION -> {
                         val confirmIntent = intent.extras?.get(Intent.EXTRA_INTENT) as Intent?
                         startActivity(confirmIntent)
+                    }
+
+                    PackageInstaller.STATUS_SUCCESS -> {
+                        Toast.makeText(this, R.string.succeeded, Toast.LENGTH_SHORT).show()
+                        updateFABs()
+                    }
+
+                    PackageInstaller.STATUS_FAILURE -> {
+                        Toast.makeText(this, R.string.failed, Toast.LENGTH_SHORT).show()
+                        updateFABs()
                     }
                 }
             }
@@ -122,17 +144,11 @@ class MainActivity : AppCompatActivity(), NavController.OnDestinationChangedList
             apk
         )
 
-//        val installIntent = Intent(Intent.ACTION_VIEW)
-//        installIntent.setDataAndType(
-//            FileProvider.getUriForFile(this,
-//                "$packageName.apkprovider", apk),
-//            "application/vnd.android.package-archive")
-//        installIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-//        installIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
-//
-//        startActivity(installIntent)
-
-        workaround.installPackage(uri, apk.name)
+        if (!Shell.SU.available()) {
+            workaroundInstaller.installPackage(uri, apk.name)
+        } else {
+            app.ipcReceiver.postIPCAction { it.installPkg(apk.absolutePath, apk.name) }
+        }
     }
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
@@ -254,10 +270,10 @@ class MainActivity : AppCompatActivity(), NavController.OnDestinationChangedList
         }
 
         override fun onReceive(context: Context?, intent: Intent?) {
-            when (intent?.action) {
-                Intent.ACTION_PACKAGE_ADDED,
-                    Intent.ACTION_PACKAGE_REMOVED -> updateFABs()
-            }
+//            when (intent?.action) {
+//                Intent.ACTION_PACKAGE_ADDED,
+//                    Intent.ACTION_PACKAGE_REMOVED -> updateFABs()
+//            }
         }
     }
 }

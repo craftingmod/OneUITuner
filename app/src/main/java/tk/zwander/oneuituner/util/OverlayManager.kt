@@ -1,9 +1,7 @@
 package tk.zwander.oneuituner.util
 
 import android.content.Context
-import android.content.Intent
 import android.graphics.Bitmap
-import android.net.Uri
 import android.os.Build
 import android.util.Log
 import com.android.apksig.ApkSigner
@@ -90,7 +88,23 @@ fun Context.install(which: String, listener: ((apk: File) -> Unit)?) {
                                 )
                             )
                         )
-                    )
+                    ).apply {
+                        if (prefs.hideQsTileBackground) {
+                            add(
+                                ResourceFileData(
+                                    "colors.xml",
+                                    "values",
+                                    makeResourceXml(
+                                        ResourceData(
+                                            "color",
+                                            "qs_tile_round_background_on",
+                                            "@android:color/transparent"
+                                        )
+                                    )
+                                )
+                            )
+                        }
+                    }
                 )
             }
             Keys.misc -> {
@@ -112,6 +126,11 @@ fun Context.install(which: String, listener: ((apk: File) -> Unit)?) {
                                         "dimen",
                                         "navigation_bar_width",
                                         "${prefs.navHeight}dp"
+                                    ),
+                                    ResourceData(
+                                        "dimen",
+                                        "status_bar_height_portrait",
+                                        "${prefs.statusBarHeight}dp"
                                     )
                                 ).apply {
                                     if (prefs.oldRecents) {
@@ -208,6 +227,28 @@ fun Context.install(which: String, listener: ((apk: File) -> Unit)?) {
                      }
                 )
             }
+            Keys.lockScreen -> {
+                OverlayInfo(
+                    Keys.systemuiPkg,
+                    Keys.lockScreenPkg,
+                    ArrayList<ResourceFileData>()
+                        .apply {
+                            add(
+                                ResourceFileData(
+                                    "bools.xml",
+                                    "values",
+                                    makeResourceXml(
+                                        ResourceData(
+                                            "bool",
+                                            "config_enableLockScreenRotation",
+                                            "${prefs.lockScreenRotation}"
+                                        )
+                                    )
+                                )
+                            )
+                        }
+                )
+            }
             else -> return@launch
         }
 
@@ -227,9 +268,11 @@ fun Context.uninstall(which: String) {
         else -> return
     }
 
-    val uninstalIntent = Intent(Intent.ACTION_DELETE)
-    uninstalIntent.data = Uri.parse("package:$pkg")
-    startActivity(uninstalIntent)
+    if (Shell.SU.available()) {
+        app.ipcReceiver.postIPCAction { it.uninstallPkg(pkg) }
+    } else {
+        workaroundInstaller.uninstallPackage(pkg)
+    }
 }
 
 fun Context.doCompileAlignAndSign(

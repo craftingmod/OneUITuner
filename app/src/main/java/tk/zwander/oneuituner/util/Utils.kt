@@ -1,9 +1,11 @@
 package tk.zwander.oneuituner.util
 
 import android.app.Activity
+import android.content.ComponentName
 import android.content.Context
+import android.content.Intent
 import android.icu.text.SimpleDateFormat
-import android.util.Log
+import android.os.Build
 import androidx.navigation.NavController
 import androidx.navigation.NavOptions
 import androidx.navigation.findNavController
@@ -11,6 +13,7 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.preference.PreferenceFragmentCompat
 import eu.chainfire.libsuperuser.Shell
 import tk.zwander.oneuituner.App
+import tk.zwander.oneuituner.BuildConfig
 import tk.zwander.oneuituner.R
 import java.io.File
 
@@ -48,6 +51,9 @@ val Context.app: App
 val Context.prefs: PrefManager
     get() = PrefManager.getInstance(this)
 
+val Context.workaroundInstaller: WorkaroundInstaller
+    get() = WorkaroundInstaller.getInstance(this)
+
 fun Context.isInstalled(packageName: String) =
         try {
             packageManager.getPackageInfo(packageName, 0)
@@ -67,6 +73,16 @@ val navOptions: NavOptions
         .setPopExitAnim(android.R.anim.fade_out)
         .build()
 
+val needsRoot: Boolean
+    get() {
+        val df = SimpleDateFormat("YYYY-MM-DD")
+        val compDate = df.parse("2019-02-01")
+        val secDate = df.parse(Build.VERSION.SECURITY_PATCH)
+
+        return !(Build.MODEL.contains("960") || Build.MODEL.contains("965"))
+                || secDate.after(compDate)
+    }
+
 val Activity.navController: NavController
     get() = findNavController(R.id.nav_host)
 
@@ -76,4 +92,9 @@ val String.isValidClockFormat: Boolean
         true
     } catch (e: Exception) {
         false
+    }
+
+val completionIntent: Intent
+    get() = Intent(WorkaroundInstaller.ACTION_FINISHED).apply {
+        component = ComponentName(BuildConfig.APPLICATION_ID, "${BuildConfig.APPLICATION_ID}.MainActivity")
     }

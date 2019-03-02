@@ -21,7 +21,7 @@
             tools:ignore="GoogleAppIndexingWarning">
         <activity android:name="info.build.DummyActivity" />
         <activity android:name=".MainActivity"
-            android:launchMode="singleTop">
+            android:launchMode="singleInstance">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
@@ -30,13 +30,13 @@
         </activity>
 
         <provider
-                android:name=".util.APKProvider"
-                android:authorities="tk.zwander.oneuituner.apkprovider"
-                android:exported="false"
-                android:grantUriPermissions="true">
+            android:name=".util.APKProvider"
+            android:authorities="tk.zwander.oneuituner.apkprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
             <meta-data
-                    android:name="android.support.FILE_PROVIDER_PATHS"
-                    android:resource="@xml/provider_paths"/>
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/provider_paths" />
         </provider>
     </application>
 
