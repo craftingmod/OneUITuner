@@ -38,6 +38,10 @@
 
     <string name="qqs_hint">Set your QS grid to 5x3 if the header icons overlap at higher values.</string>
 
+    <!-- Modded Texts -->
     <string name="builded_custom"></string>
     <string name="builded_button">Info</string>
+    <string name="ota_title">OTA</string>
+    <string name="disable_ota_notification">Disable OTA Notification</string>
+    <string name="disable_ota_noti_desc">Shut up update alert! (Reboot required)</string>
 </resources>

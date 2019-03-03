@@ -34,7 +34,9 @@
     <string name="status_bar_height">상단바 높이</string>
     <string name="hide_qs_tile_background">빠른 설정(토글)의 배경을 숨기기</string>
     <string name="lock_screen_rotation">잠금화면에서 자동 회전 활성화</string>
-    <string name="root_required_desc">"최신 버전의 OneUI(1.1)에서 삼성이 써드파티 앱이 테마를 사용하게 하는걸 막아서 최신 버전의 이 장치는 튜너를 사용하기 위해 루트 권한이
-        필요합니다. "
+    <string name="root_required_desc">"최신 버전의 OneUI(1.1)에서 삼성이 써드파티 앱이 테마를 사용하게 하는걸 막아서 최신 버전의 이 장치는 튜너를 사용하기 위해 루트 권한이 필요합니다."
     </string>
+    <string name="disable_ota_notification">업데이트 알림 제거</string>
+    <string name="disable_ota_noti_desc">업데이트 하라는 알림을 비활성화 합니다.\n업데이트 창을 띄울 수도 없게 합니다. (재부팅이 필요합니다.)</string>
+    <string name="ota_title">업데이트</string>
 </resources>

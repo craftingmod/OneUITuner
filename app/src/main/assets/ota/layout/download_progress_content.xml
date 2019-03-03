@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <Space android:id="@*com.wssyncmldm:id/download_progress_main_title" android:layout_width="0.0dip" android:layout_height="0.0dip"/>
+    <Space android:id="@*com.wssyncmldm:id/download_progress_bar" android:layout_width="0.0dip" android:layout_height="0.0dip"/>
+    <view android:id="@*com.wssyncmldm:id/download_progress_main_body" class="com.sec.android.fota.variant.view.UpToLargeScaleFont$TextView" style="@*com.wssyncmldm:style/Wssyncmldm_Theme.Widget.TextView.Main.Body2" />
+</merge>

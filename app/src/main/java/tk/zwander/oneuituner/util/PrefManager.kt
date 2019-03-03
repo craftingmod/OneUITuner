@@ -20,6 +20,7 @@ class PrefManager private constructor(private val context: Context) {
         const val CLOCK_FORMAT = "clock_format"
         const val CUSTOM_QS_DATE_FORMAT = "custom_qs_date_format"
         const val QS_DATE_FORMAT = "qs_date_format"
+        const val DISABLE_OTA_UPDATE = "disable_ota_update"
 
         const val HEADER_COUNT_PORTRAIT = "header_count_portrait"
         const val HEADER_COUNT_LANDSCAPE = "header_count_landscape"
@@ -48,6 +49,9 @@ class PrefManager private constructor(private val context: Context) {
 
     val qsDateFormat: String
         get() = getString(QS_DATE_FORMAT, "EEEMMMMdd")
+
+    val disableOTAUpdate: Boolean
+        get() = getBoolean(DISABLE_OTA_UPDATE, false)
 
     val headerCountPortrait: Int
         get() = getInt(HEADER_COUNT_PORTRAIT, 6)

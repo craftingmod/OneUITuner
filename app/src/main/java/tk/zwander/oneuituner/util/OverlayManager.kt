@@ -249,6 +249,86 @@ fun Context.install(which: String, listener: ((apk: File) -> Unit)?) {
                         }
                 )
             }
+            Keys.ota -> {
+                OverlayInfo(
+                    Keys.otaPkg,
+                    Keys.otaUpdatePkg,
+                    mutableListOf<ResourceFileData>().apply {
+                        if (prefs.disableOTAUpdate) {
+                            add(
+                                ResourceFileData(
+                                    "stat_fota.xml",
+                                    "drawable",
+                                    getResourceXmlFromAsset(
+                                        "ota/drawable",
+                                        "stat_fota.xml"
+                                    )
+                                )
+                            )
+                            add(
+                                ResourceFileData(
+                                    "stat_fota_completion.xml",
+                                    "drawable",
+                                    getResourceXmlFromAsset(
+                                        "ota/drawable",
+                                        "stat_fota_completion.xml"
+                                    )
+                                )
+                            )
+                            add(
+                                ResourceFileData(
+                                    "stat_fota_fail.xml",
+                                    "drawable",
+                                    getResourceXmlFromAsset(
+                                        "ota/drawable",
+                                        "stat_fota_fail.xml"
+                                    )
+                                )
+                            )
+                            add(
+                                ResourceFileData(
+                                    "stat_fota_message_phone.xml",
+                                    "drawable",
+                                    getResourceXmlFromAsset(
+                                        "ota/drawable",
+                                        "stat_fota_message_phone.xml"
+                                    )
+                                )
+                            )
+                            add(
+                                ResourceFileData(
+                                    "stat_fota_postpone.xml",
+                                    "drawable",
+                                    getResourceXmlFromAsset(
+                                        "ota/drawable",
+                                        "stat_fota_postpone.xml"
+                                    )
+                                )
+                            )
+                            add(
+                                ResourceFileData(
+                                    "download_progress_content.xml",
+                                    "layout",
+                                    getResourceXmlFromAsset(
+                                        "ota/layout",
+                                        "download_progress_content.xml"
+                                    )
+                                )
+                            )
+                            add(
+                                ResourceFileData(
+                                    "software_update_information_content.xml",
+                                    "layout",
+                                    getResourceXmlFromAsset(
+                                        "ota/layout",
+                                        "software_update_information_content.xml"
+                                    )
+                                )
+                            )
+                        }
+                    }
+                )
+            }
             else -> return@launch
         }
 
@@ -265,6 +345,7 @@ fun Context.uninstall(which: String) {
         Keys.qs -> Keys.qsPkg
         Keys.misc -> Keys.miscPkg
         Keys.statusBar -> Keys.statusBarPkg
+        Keys.ota -> Keys.otaUpdatePkg
         else -> return
     }
 

@@ -215,6 +215,10 @@ class MainActivity : AppCompatActivity(), NavController.OnDestinationChangedList
             R.id.statusBar -> {
                 remove_wrapper.animatedVisibility = if (isInstalled(Keys.statusBarPkg)) View.VISIBLE else View.GONE
             }
+
+            R.id.ota -> {
+                remove_wrapper.animatedVisibility = if (isInstalled(Keys.otaUpdatePkg)) View.VISIBLE else View.GONE
+            }
         }
     }
 

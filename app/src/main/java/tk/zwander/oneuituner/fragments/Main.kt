@@ -56,5 +56,14 @@ class Main : Base() {
             )
             true
         }
+
+        findPreference(Keys.ota).setOnPreferenceClickListener {
+            navController.navigate(
+                R.id.action_main_to_ota,
+                null,
+                navOptions
+            )
+            true
+        }
     }
 }

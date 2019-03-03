@@ -22,6 +22,11 @@
         />
 
     <Preference
+        android:title="@string/ota_title"
+        android:key="ota"
+        />
+
+    <Preference
         android:title="@string/misc"
         android:key="misc"
         />
