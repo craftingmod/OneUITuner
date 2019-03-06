@@ -23,8 +23,8 @@
     <string name="hide_status_bar_carrier_desc">추악한 통신사의 추노마크를 잠금화면 및 상단바에서 숨깁니다. 재부팅이 필요합니다.</string>
     <string name="qqs_hint">빠른 설정 목록(펼친 상단바의 토글 목록)이 너무 많으면 5x3의 표 형식으로 설정됩니다.</string>
     <string name="builded_custom">&lt;RIP ChocoRoyce&gt;
-    \n비공식 빌드입니다. (Version 3)
-    \n개발자분이 PR을 받지 않습니다.
+    \n비공식 빌드입니다. (Version 5)
+    \n굿락이 곧 나오니 기다립시다!
     </string>
     <string name="builded_button">정보</string>
     <string name="lock_screen">잠금화면</string>
@@ -36,9 +36,6 @@
     <string name="lock_screen_rotation">잠금화면에서 자동 회전 활성화</string>
     <string name="root_required_desc">"최신 버전의 OneUI(1.1)에서 삼성이 써드파티 앱이 테마를 사용하게 하는걸 막아서 최신 버전의 이 장치는 튜너를 사용하기 위해 루트 권한이 필요합니다."
     </string>
-    <string name="disable_ota_notification">업데이트 알림 제거</string>
-    <string name="disable_ota_noti_desc">업데이트 하라는 알림을 비활성화 합니다.\n업데이트 창을 띄울 수도 없게 합니다. (재부팅이 필요합니다.)</string>
-    <string name="ota_title">업데이트</string>
     <string name="qs_header">빠른 설정 (안 펼친)</string>
     <string name="qs_row_count_portrait">세로 화면의 행 개수</string>
     <string name="qs_row_count_landscape">가로 화면의 행 개수</string>
@@ -46,4 +43,16 @@
     <string name="qs_col_count_landscape">가로 화면의 열 개수</string>
     <string name="qs_row_col_hint">이 설정을 적용하실려면 빠른 설정 버튼을 5x3으로 배치해주세요.</string>
     <string name="qs_row_col">빠른 설정 (펼친)</string>
+    <string name="custom_clock_format_default">a h:mm</string>
+    <string name="custom_qs_date_format_default">EEEMMMMdd</string>
+
+    <!-- Custom -->
+    <string name="ota_title">펌웨어 업데이트</string>
+    <string name="disable_ota_notification">업데이트 알림 제거</string>
+    <string name="disable_ota_noti_desc">업데이트 하라는 알림을 비활성화 합니다.\n업데이트 창을 띄울 수도 없게 합니다. (재부팅이 필요합니다.)</string>
+
+    <string name="camera_title">카메라</string>
+    <string name="mute_camera_sound">카메라 소리 끄기.</string>
+    <string name="mute_camera_sound_desc">법을 어기지 맙시다.
+    \n오버레이 말고 Settings.System안에 csc_pref_camera_forced_shuttersound_key를 0으로 설정해주셔도 되어요.</string>
 </resources>

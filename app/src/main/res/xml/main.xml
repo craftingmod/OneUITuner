@@ -27,6 +27,11 @@
         />
 
     <Preference
+        android:title="@string/camera_title"
+        android:key="camera"
+        />
+
+    <Preference
         android:title="@string/misc"
         android:key="misc"
         />

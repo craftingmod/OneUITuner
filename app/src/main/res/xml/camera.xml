@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <SwitchPreference
+        android:title="@string/mute_camera_sound"
+        android:summary="@string/mute_camera_sound_desc"
+        android:key="mute_camera_sound" />
+</PreferenceScreen>

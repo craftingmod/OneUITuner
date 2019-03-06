@@ -219,6 +219,10 @@ class MainActivity : AppCompatActivity(), NavController.OnDestinationChangedList
             R.id.ota -> {
                 remove_wrapper.animatedVisibility = if (isInstalled(Keys.otaUpdatePkg)) View.VISIBLE else View.GONE
             }
+
+            R.id.camera -> {
+                remove_wrapper.animatedVisibility = if (isInstalled(Keys.cameraMutePkg)) View.VISIBLE else View.GONE
+            }
         }
     }
 

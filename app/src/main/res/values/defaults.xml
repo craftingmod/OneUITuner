@@ -7,6 +7,8 @@
     <bool name="left_system_icons_default">false</bool>
     <bool name="hide_status_bar_carrier_default">false</bool>
     <bool name="lock_screen_rotation_default">false</bool>
+    <bool name="ota_disable_default">false</bool>
+    <bool name="camera_shuttersound_disable_default">false</bool>
 
     <string name="custom_clock_format_default">h:mm a</string>
     <string name="custom_qs_date_format_default">EEEMMMMdd</string>

@@ -65,5 +65,14 @@ class Main : Base() {
             )
             true
         }
+
+        findPreference(Keys.camera).setOnPreferenceClickListener {
+            navController.navigate(
+                R.id.action_main_to_camera,
+                null,
+                navOptions
+            )
+            true
+        }
     }
 }

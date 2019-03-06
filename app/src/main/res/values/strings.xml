@@ -45,9 +45,13 @@
     <string name="qqs_hint">Set your QS grid to 5x3 if the header icons overlap at higher values.</string>
     <string name="qs_row_col_hint">Set your QS grid to 5x3 for these to take effect.</string>
 
+    <!-- Modded -->
     <string name="builded_custom"></string>
     <string name="builded_button">Info</string>
-    <string name="ota_title">OTA</string>
+    <string name="ota_title">OTA Update</string>
     <string name="disable_ota_notification">Disable OTA Notification</string>
     <string name="disable_ota_noti_desc">Shut up update alert! (Reboot required)</string>
+    <string name="camera_title">Camera</string>
+    <string name="mute_camera_sound">Mute Camera Sound</string>
+    <string name="mute_camera_sound_desc">In Korea, this option doesn\'t exists. Hahaha</string>
 </resources>

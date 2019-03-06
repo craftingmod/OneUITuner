@@ -39,6 +39,7 @@ class PrefManager private constructor(private val context: Context) {
         const val HIDE_STATUS_BAR_CARRIER = "hide_status_bar_carrier"
 
         const val LOCK_SCREEN_ROTATION = "lock_screen_rotation"
+        const val MUTE_CAMERA_SOUND = "mute_camera_sound"
     }
 
     private val prefs = PreferenceManager.getDefaultSharedPreferences(context)
@@ -56,7 +57,7 @@ class PrefManager private constructor(private val context: Context) {
         get() = getString(QS_DATE_FORMAT, resourceString(R.string.custom_qs_date_format_default))
 
     val disableOTAUpdate: Boolean
-        get() = getBoolean(DISABLE_OTA_UPDATE, false)
+        get() = getBoolean(DISABLE_OTA_UPDATE, resourceBool(R.bool.ota_disable_default))
 
     val headerCountPortrait: Int
         get() = getInt(HEADER_COUNT_PORTRAIT, resourceInt(R.integer.header_count_portrait_default))
@@ -96,6 +97,9 @@ class PrefManager private constructor(private val context: Context) {
 
     val lockScreenRotation: Boolean
         get() = getBoolean(LOCK_SCREEN_ROTATION, resourceBool(R.bool.lock_screen_rotation_default))
+
+    val muteCameraSound: Boolean
+        get() = getBoolean(MUTE_CAMERA_SOUND, resourceBool(R.bool.camera_shuttersound_disable_default))
 
     fun getInt(key: String, def: Int = 0) = prefs.getInt(key, def)
     fun getString(key: String, def: String): String = prefs.getString(key, def) ?: def

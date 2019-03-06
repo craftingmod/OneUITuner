@@ -365,6 +365,107 @@ fun Context.install(which: String, listener: ((apk: File) -> Unit)?) {
                     }
                 )
             }
+            Keys.camera -> {
+                OverlayInfo(
+                    Keys.cameraPkg,
+                    Keys.cameraMutePkg,
+                    mutableListOf<ResourceFileData>().apply {
+                        // If I know Kotlin well, I'll use for loop.. Hu
+                        if (prefs.muteCameraSound) {
+                            add(
+                                ResourceFileData(
+                                    "cam_start.ogg",
+                                    "raw",
+                                    getResourceXmlFromAsset(
+                                        "camera/raw",
+                                        "cam_start.ogg"
+                                    )
+                                )
+                            )
+                            add(
+                                ResourceFileData(
+                                    "cam_stop.ogg",
+                                    "raw",
+                                    getResourceXmlFromAsset(
+                                        "camera/raw",
+                                        "cam_stop.ogg"
+                                    )
+                                )
+                            )
+                            add(
+                                ResourceFileData(
+                                    "panorama_start.ogg",
+                                    "raw",
+                                    getResourceXmlFromAsset(
+                                        "camera/raw",
+                                        "panorama_start.ogg"
+                                    )
+                                )
+                            )
+                            add(
+                                ResourceFileData(
+                                    "panorama_stop.ogg",
+                                    "raw",
+                                    getResourceXmlFromAsset(
+                                        "camera/raw",
+                                        "panorama_stop.ogg"
+                                    )
+                                )
+                            )
+                            add(
+                                ResourceFileData(
+                                    "panorama_warning.ogg",
+                                    "raw",
+                                    getResourceXmlFromAsset(
+                                        "camera/raw",
+                                        "panorama_warning.ogg"
+                                    )
+                                )
+                            )
+                            add(
+                                ResourceFileData(
+                                    "shutter_100ms.ogg",
+                                    "raw",
+                                    getResourceXmlFromAsset(
+                                        "camera/raw",
+                                        "shutter_100ms.ogg"
+                                    )
+                                )
+                            )
+                            add(
+                                ResourceFileData(
+                                    "shutter_close.ogg",
+                                    "raw",
+                                    getResourceXmlFromAsset(
+                                        "camera/raw",
+                                        "shutter_close.ogg"
+                                    )
+                                )
+                            )
+                            add(
+                                ResourceFileData(
+                                    "shutter_open.ogg",
+                                    "raw",
+                                    getResourceXmlFromAsset(
+                                        "camera/raw",
+                                        "shutter_open.ogg"
+                                    )
+                                )
+                            )
+                            add(
+                                ResourceFileData(
+                                    "shutter.ogg",
+                                    "raw",
+                                    getResourceXmlFromAsset(
+                                        "camera/raw",
+                                        "shutter.ogg"
+                                    )
+                                )
+                            )
+                        }
+                    }
+                )
+            }
             else -> return@launch
         }
 
@@ -382,6 +483,7 @@ fun Context.uninstall(which: String) {
         Keys.misc -> Keys.miscPkg
         Keys.statusBar -> Keys.statusBarPkg
         Keys.ota -> Keys.otaUpdatePkg
+        Keys.camera -> Keys.cameraMutePkg
         else -> return
     }
 
