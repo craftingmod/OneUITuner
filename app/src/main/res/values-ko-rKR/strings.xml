@@ -8,8 +8,8 @@
     <string name="custom_clock">커스텀 상단바 시계</string>
     <string name="custom_clock_desc">삼성의 상단바 시계를 직접 수정가능한 버전으로 바꿉니다.
     \n언제나 검은 색상이니 보이지 않을수도 있습니다.</string>
-    <string name="header_count_portrait">버튼 개수 (세로 화면)</string>
-    <string name="header_count_landscape">버튼 개수 (가로 화면)</string>
+    <string name="header_count_portrait">세로 화면의 버튼 개수</string>
+    <string name="header_count_landscape">가로 화면의 버튼 개수</string>
     <string name="old_recents">예전 스타일의 최근 목록</string>
     <string name="old_recents_desc">예전(세로로 정렬된 목록) 스타일의 최근 목록을 사용합니다. 재부팅이 필요합니다.</string>
     <string name="nav_height">내비게이션 바 높이</string>
@@ -39,4 +39,11 @@
     <string name="disable_ota_notification">업데이트 알림 제거</string>
     <string name="disable_ota_noti_desc">업데이트 하라는 알림을 비활성화 합니다.\n업데이트 창을 띄울 수도 없게 합니다. (재부팅이 필요합니다.)</string>
     <string name="ota_title">업데이트</string>
+    <string name="qs_header">빠른 설정 (안 펼친)</string>
+    <string name="qs_row_count_portrait">세로 화면의 행 개수</string>
+    <string name="qs_row_count_landscape">가로 화면의 행 개수</string>
+    <string name="qs_col_count_portrait">세로 화면의 열 개수</string>
+    <string name="qs_col_count_landscape">가로 화면의 열 개수</string>
+    <string name="qs_row_col_hint">이 설정을 적용하실려면 빠른 설정 버튼을 5x3으로 배치해주세요.</string>
+    <string name="qs_row_col">빠른 설정 (펼친)</string>
 </resources>
